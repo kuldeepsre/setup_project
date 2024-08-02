@@ -5,12 +5,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:setup_project/ui_design/home_screen.dart';
+import 'package:setup_project/ui_design/dashboard.dart';
 import 'AppLocalizations.dart';
 
 import 'package:http/http.dart' as http;
 
 import 'Routes/route_generator.dart';
+import 'bloc/dashboard/dashboard_bloc.dart';
 import 'bloc/them/ThemeCubit.dart';
 import 'common_button/LocalizationKeys.dart';
 
@@ -24,10 +25,9 @@ class MyApp extends StatelessWidget {
 
     return MultiProvider(
       providers: [
-
         BlocProvider<ThemeCubit>(create: (context) => ThemeCubit()),
         BlocProvider<LanguageCubit>(create: (context) => LanguageCubit()),
-
+        BlocProvider<BottomNavigationBloc>(create: (context) => BottomNavigationBloc()),
       ],
       child: BlocBuilder<ThemeCubit, ThemeState>(
         builder: (themeContext, themeState) {
@@ -85,7 +85,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) =>  HomeScreen()),
+      MaterialPageRoute(builder: (context) =>  MyHomePage()),
     );
   }
 
