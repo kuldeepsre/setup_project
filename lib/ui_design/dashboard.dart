@@ -51,13 +51,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
     return Scaffold(
       appBar: AppBar(
         title: const Text('Bottom Navigation & 3D Drawer with BLoC'),
-        leading: null, // Remove the leading icon
-        // actions: [
-        //   IconButton(
-        //     icon: const Icon(Icons.menu),
-        //     onPressed: _toggleDrawer,
-        //   ),
-        // ],
+        leading: null
       ),
       drawer: CustomDrawer(animationController: _animationController), // Use drawer to open from the left
       body: BlocBuilder<BottomNavigationBloc, BottomNavigationState>(
