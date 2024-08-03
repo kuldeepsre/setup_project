@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:setup_project/ui_design/pagination_scrren.dart';
 import 'package:setup_project/ui_design/setting%20scrren.dart';
 
 import '../bloc/dashboard/bottom_navigation_event.dart';
@@ -61,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
             children: [
               HomeScreen(),
               NotificationScreen(),
-              SettingScreen(),
+              UserList()
             ],
           );
         },

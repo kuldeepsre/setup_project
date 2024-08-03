@@ -17,3 +17,9 @@ class UserError extends UserState {
 
   UserError(this.message);
 }
+class UserLoad extends UserState {
+  final List<User> users;
+  final bool hasReachedMax;
+
+  UserLoad(this.users, {this.hasReachedMax = false});
+}

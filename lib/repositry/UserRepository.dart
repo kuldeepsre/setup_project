@@ -4,10 +4,13 @@ import '../model/user_response.dart';
 
 abstract class UserRepository {
   Future<List<User>> getUsers();
+  Future<List<User>> getUser({int page = 1, int perPage = 10});
 }
+
 abstract class PostRepository {
   Future<List<Post>> getPosts();
 }
+
 class UserRepositoryImpl implements UserRepository {
   final ApiService apiService;
 
@@ -17,6 +20,13 @@ class UserRepositoryImpl implements UserRepository {
   Future<List<User>> getUsers() async {
     return await apiService.fetchUsers();
   }
+
+  @override
+  Future<List<User>> getUser({int page = 1, int perPage = 10}) async {
+    return await apiService.fetchUserData();
+  }
+
+
 }
 
 class PostRepositoryImpl implements PostRepository {
