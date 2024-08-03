@@ -32,17 +32,17 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       }
     });
     on<LoadUser>((event, emit) async {
-      if (state is UserLoading && !(state as UserLoad).hasReachedMax) return;
+      if (state is UserDataLoading && !(state as UserLoad).hasReachedMax) return;
 
       final currentState = state;
       List<User> users = [];
       bool hasReachedMax = false;
 
-      if (currentState is UserLoaded) {
+      if (currentState is UserLoad) {
         users = currentState.users;
       }
 
-      emit(UserLoading());
+      emit(UserDataLoading());
 
       try {
         final newUsers = await userRepository.getUser(page: event.page, perPage: event.perPage);

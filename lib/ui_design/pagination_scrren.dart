@@ -7,11 +7,10 @@ import '../bloc/user/user_bloc.dart';
 class UserList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Users')),
-      body: BlocBuilder<UserBloc, UserState>(
+        return Scaffold(
+        body: BlocBuilder<UserBloc, UserState>(
         builder: (context, state) {
-          if (state is UserLoading && (state as UserLoaded).users.isEmpty) {
+          if (state is UserDataLoading) {
             return const Center(child: CircularProgressIndicator());
           }
 
@@ -57,7 +56,7 @@ class UserList extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          context.read<UserBloc>().add(LoadUsers());
+          context.read<UserBloc>().add(LoadUser(page: 1, perPage: 10));
         },
         child: const Icon(Icons.refresh),
       ),

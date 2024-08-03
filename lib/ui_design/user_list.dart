@@ -13,9 +13,10 @@ class UserListPage extends StatelessWidget {
       appBar: AppBar(title: Text('Users')),
       body: BlocBuilder<UserBloc, UserState>(
         builder: (context, state) {
-          if (state is UserLoading) {
+          if (state is LoadUser) {
             return Center(child: CircularProgressIndicator());
-          } else if (state is UserLoaded) {
+          }
+          else if (state is UserLoad) {
             return ListView.builder(
               itemCount: state.users.length,
               itemBuilder: (context, index) {
