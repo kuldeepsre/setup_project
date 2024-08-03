@@ -38,7 +38,7 @@ class HomeScreen extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              showCustomSnackbar(context);
+              showCustomSnackbar(context,"etrtre6tre");
             },
             child: Text('Show Success Dialog'),
           ),

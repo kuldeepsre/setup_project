@@ -6,13 +6,11 @@ class DateFormatUtils {
   static final DateFormat _fullDateFormat = DateFormat('MMMM d, yyyy');
   static final DateFormat _shortDateFormat = DateFormat('MM/dd/yyyy');
   static final DateFormat _customFormat = DateFormat('dd-MM-yyyy');
-
   // Formats the date to 'yyyy-MM-dd'
   static String formatDefault(DateTime date) {
     return _defaultFormat.format(date);
   }
-
-  // Formats the date to 'MMMM d, yyyy'
+   // Formats the date to 'MMMM d, yyyy'
   static String formatFull(DateTime date) {
     return _fullDateFormat.format(date);
   }

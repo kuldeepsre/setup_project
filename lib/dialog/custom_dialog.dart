@@ -186,16 +186,16 @@ showCardDialog(BuildContext context) {
     },
   );
 }
-void showCustomSnackbar(BuildContext context) {
+void showCustomSnackbar(BuildContext context,String msg) {
   final snackBar = SnackBar(
     backgroundColor: Colors.blueGrey, // Custom background color
-    content: const Row(
+    content:  Row(
       children: <Widget>[
         Icon(Icons.info, color: Colors.white), // Custom icon
         SizedBox(width: 8),
         Expanded(
           child: Text(
-            'This is a custom Snackbar!',
+            msg,
             style: TextStyle(color: Colors.white), // Custom text style
           ),
         ),

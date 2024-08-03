@@ -8,11 +8,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:setup_project/bloc/post_data/post_bloc.dart';
 import 'package:setup_project/repositry/UserRepository.dart';
 import 'package:setup_project/ui_design/dashboard.dart';
+import 'package:setup_project/utils/network_service.dart';
 import 'AppLocalizations.dart';
 import 'package:http/http.dart' as http;
 import 'Routes/route_generator.dart';
 import 'api/api_services.dart';
 import 'bloc/dashboard/dashboard_bloc.dart';
+import 'bloc/login/login_bloc.dart';
 import 'bloc/map/map_bloc.dart';
 import 'bloc/them/ThemeCubit.dart';
 import 'bloc/user/user_bloc.dart';
@@ -32,6 +34,7 @@ class MyApp extends StatelessWidget {
         BlocProvider<ThemeCubit>(create: (context) => ThemeCubit()),
         BlocProvider<LanguageCubit>(create: (context) => LanguageCubit()),
         BlocProvider<MapBloc>(create: (context) => MapBloc()),
+        BlocProvider<LoginBloc>(create: (context) => LoginBloc(networkService: NetworkService())),
         BlocProvider<BottomNavigationBloc>(create: (context) => BottomNavigationBloc()),
         BlocProvider<UserBloc>(create: (context) => UserBloc(UserRepositoryImpl(ApiService()))),
         BlocProvider<PostBloc>(create: (context) => PostBloc(PostRepositoryImpl(ApiService()))),
