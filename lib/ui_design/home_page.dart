@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:setup_project/ui_design/post_list.dart';
 import 'package:setup_project/ui_design/user_list.dart';
 
+import '../dialog/success_dialog.dart';
+
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -27,6 +29,13 @@ class HomeScreen extends StatelessWidget {
               );
             },
             child: const Text('View Posts'),
+          ),
+
+          ElevatedButton(
+            onPressed: () {
+              ExitDialog.show(context);
+            },
+            child: Text('Show Success Dialog'),
           ),
         ],
       ),
