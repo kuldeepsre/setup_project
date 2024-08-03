@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:setup_project/ui_design/post_list.dart';
 import 'package:setup_project/ui_design/user_list.dart';
 
-import '../dialog/success_dialog.dart';
+import '../dialog/custom_dialog.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -33,7 +33,7 @@ class HomeScreen extends StatelessWidget {
 
           ElevatedButton(
             onPressed: () {
-              ExitDialog.show(context);
+              showCardDialog(context);
             },
             child: Text('Show Success Dialog'),
           ),
