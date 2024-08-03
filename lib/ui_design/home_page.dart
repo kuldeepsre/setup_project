@@ -4,14 +4,20 @@ import 'package:setup_project/ui_design/post_list.dart';
 import 'package:setup_project/ui_design/user_list.dart';
 
 import '../dialog/custom_dialog.dart';
+import '../utils/date_format_utils.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    DateTime now = DateTime.now();
     return  Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+          Text('Default Format: ${DateFormatUtils.formatDefault(now)}'),
+          Text('Full Format: ${DateFormatUtils.formatFull(now)}'),
+          Text('Short Format: ${DateFormatUtils.formatShort(now)}'),
+          Text('Custom Format: ${DateFormatUtils.formatCustom(now)}'),
           ElevatedButton(
             onPressed: () {
               Navigator.push(
@@ -30,10 +36,9 @@ class HomeScreen extends StatelessWidget {
             },
             child: const Text('View Posts'),
           ),
-
           ElevatedButton(
             onPressed: () {
-              showCardDialog(context);
+              showCustomSnackbar(context);
             },
             child: Text('Show Success Dialog'),
           ),
