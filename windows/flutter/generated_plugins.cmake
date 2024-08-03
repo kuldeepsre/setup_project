@@ -7,6 +7,8 @@ list(APPEND FLUTTER_PLUGIN_LIST
   file_selector_windows
   firebase_core
   firebase_storage
+  geolocator_windows
+  permission_handler_windows
   sidebar_bigeagle
 )
 

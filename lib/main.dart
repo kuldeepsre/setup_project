@@ -13,6 +13,7 @@ import 'package:http/http.dart' as http;
 import 'Routes/route_generator.dart';
 import 'api/api_services.dart';
 import 'bloc/dashboard/dashboard_bloc.dart';
+import 'bloc/map/map_bloc.dart';
 import 'bloc/them/ThemeCubit.dart';
 import 'bloc/user/user_bloc.dart';
 import 'common_button/LocalizationKeys.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider<ThemeCubit>(create: (context) => ThemeCubit()),
         BlocProvider<LanguageCubit>(create: (context) => LanguageCubit()),
+        BlocProvider<MapBloc>(create: (context) => MapBloc()),
         BlocProvider<BottomNavigationBloc>(create: (context) => BottomNavigationBloc()),
         BlocProvider<UserBloc>(create: (context) => UserBloc(UserRepositoryImpl(ApiService()))),
         BlocProvider<PostBloc>(create: (context) => PostBloc(PostRepositoryImpl(ApiService()))),
