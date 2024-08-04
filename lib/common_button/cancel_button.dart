@@ -1,12 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:setup_project/utils/text_style.dart';
 
-class CustomButton extends StatelessWidget {
+class CancelButton extends StatelessWidget {
   final VoidCallback onPressed;
   final String title;
-
-  CustomButton({required this.onPressed, required this.title});
-
+  CancelButton({super.key, required this.onPressed, required this.title});
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -16,7 +15,7 @@ class CustomButton extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
           decoration: BoxDecoration(
-            color: Colors.blue,
+            color: Colors.black38,
             borderRadius: BorderRadius.circular(8.0),
             boxShadow: const [
               BoxShadow(
@@ -29,11 +28,11 @@ class CustomButton extends StatelessWidget {
           child: Center(
             child: Text(
               title,
-              style: const TextStyle(color: Colors.white, fontSize: 16.0),
+              style: headingStyle),
             ),
           ),
         ),
-      ),
+
     );
   }
 }

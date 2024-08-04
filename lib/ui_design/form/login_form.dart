@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../bloc/login/login_bloc.dart';
-import '../../components/custom_button.dart';
+import '../../common_button/custom_button.dart';
 import '../../components/loading_indicator.dart';
 import '../../dialog/custom_dialog.dart';
 import '../../utils/color_utils.dart';
