@@ -18,8 +18,8 @@ class CustomButton extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.blue,
             borderRadius: BorderRadius.circular(8.0),
-            boxShadow: [
-              const BoxShadow(
+            boxShadow: const [
+              BoxShadow(
                 color: Colors.black26,
                 blurRadius: 4.0,
                 offset: Offset(0, 2),
