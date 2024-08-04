@@ -13,18 +13,14 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc({required this.networkService}) : super(LoginInitial()) {
     on<LoginButtonPressed>(_onLoginButtonPressed);
   }
-
   Future<void> _onLoginButtonPressed(
       LoginButtonPressed event, Emitter<LoginState> emit) async {
     if (!await networkService.isConnected()) {
       emit(NoInternetConnection());
       return;
     }
-
     emit(LoginLoading());
-
     await Future.delayed(Duration(seconds: 2)); // Simulate a network call
-
     if (event.username == 'user' && event.password == 'password') {
       emit(LoginSuccess(msg: "Login Successfull"));
     } else {
