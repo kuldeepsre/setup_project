@@ -21,9 +21,9 @@ class CustomDialogs {
         context: NavigationService().navigationKey.currentContext!,
         builder: (BuildContext context) {
           return AlertDialog(
-            shape: const RoundedRectangleBorder(
+            shape:  const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(32.0))),
-            contentPadding: const EdgeInsets.only(top: 10.0),
+            contentPadding:  const EdgeInsets.only(top: 10.0),
             content: SizedBox(
               width: 300.0,
               height: 200,
@@ -35,20 +35,20 @@ class CustomDialogs {
                   Text(
                     title,
                     textAlign: TextAlign.center,
-                    style: const TextStyle(
+                    style:  const TextStyle(
                         fontSize: 18,
                         color: Colors.black,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w700),
                   ),
-                  const SizedBox(height: 10),
-                  const Divider(thickness: 0.5,),
-                  const SizedBox(height: 30),
+                   const SizedBox(height: 10),
+                   const Divider(thickness: 0.5,),
+                   const SizedBox(height: 30),
                   Expanded(
                     child: Text(
                       msg,
                       textAlign: TextAlign.center,
-                      style: const TextStyle(
+                      style:  const TextStyle(
                           fontSize: 14,
                           color: Colors.black,
                           fontFamily: 'Poppins',
@@ -65,11 +65,11 @@ class CustomDialogs {
                       height: 50,
                       decoration: BoxDecoration(
                         color: ColorUtils.app_primary_color,
-                        borderRadius: const BorderRadius.only(
+                        borderRadius:  const BorderRadius.only(
                             bottomLeft: Radius.circular(32.0),
                             bottomRight: Radius.circular(32.0)),
                       ),
-                      child: const Text(
+                      child:  const Text(
                         "OK",
                         style: TextStyle(color: Colors.white),
                         textAlign: TextAlign.center,
@@ -88,10 +88,10 @@ class CustomDialogs {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            shape: const RoundedRectangleBorder(
-                borderRadius: const BorderRadius.all(const Radius.circular(32.0))),
-            contentPadding: const EdgeInsets.only(top: 10.0),
-            content: Container(
+            shape:  const RoundedRectangleBorder(
+                borderRadius:  BorderRadius.all( Radius.circular(32.0))),
+            contentPadding:  const EdgeInsets.only(top: 10.0),
+            content: SizedBox(
               width: 300.0,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -104,19 +104,19 @@ class CustomDialogs {
                     children: <Widget>[
                       Text(
                         title,
-                        style: const TextStyle(fontSize: 24.0),
+                        style:  const TextStyle(fontSize: 24.0),
                       ),
                     ],
                   ),
-                  const SizedBox(
+                   const SizedBox(
                     height: 5.0,
                   ),
-                  const Divider(
+                   const Divider(
                     color: Colors.grey,
                     height: 4.0,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 30.0, right: 30.0),
+                    padding:  const EdgeInsets.only(left: 30.0, right: 30.0),
                     child: TextField(
                       decoration: InputDecoration(
                         hintText: message,
@@ -131,16 +131,16 @@ class CustomDialogs {
                       Navigator.pop(context);
                     },
                     child: Container(
-                      padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
+                      padding:  const EdgeInsets.only(top: 20.0, bottom: 20.0),
                       decoration: BoxDecoration(
                         color: ColorUtils.app_primary_color,
-                        borderRadius: const BorderRadius.only(
-                            bottomLeft: const Radius.circular(32.0),
-                            bottomRight: const Radius.circular(32.0)),
+                        borderRadius:  const BorderRadius.only(
+                            bottomLeft:  Radius.circular(32.0),
+                            bottomRight:  Radius.circular(32.0)),
                       ),
-                      child: const Text(
+                      child:  const Text(
                         "OK",
-                        style: const TextStyle(color: Colors.white),
+                        style:  TextStyle(color: Colors.white),
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -160,10 +160,10 @@ class CustomDialogs {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            shape: const RoundedRectangleBorder(
-                borderRadius: const BorderRadius.all(const Radius.circular(32.0))),
-            contentPadding: const EdgeInsets.only(top: 10.0),
-            content: Container(
+            shape:  const RoundedRectangleBorder(
+                borderRadius:  BorderRadius.all( Radius.circular(32.0))),
+            contentPadding:  const EdgeInsets.only(top: 10.0),
+            content: SizedBox(
               width: 300.0,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -176,19 +176,19 @@ class CustomDialogs {
                     children: <Widget>[
                       Text(
                         title,
-                        style: const TextStyle(fontSize: 22.0),
+                        style:  const TextStyle(fontSize: 22.0),
                       ),
                     ],
                   ),
-                  const SizedBox(
+                   const SizedBox(
                     height: 5.0,
                   ),
-                  const Divider(
+                   const Divider(
                     color: Colors.grey,
                     height: 4.0,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 30.0, right: 30.0),
+                    padding:  const EdgeInsets.only(left: 30.0, right: 30.0),
                     child: TextField(
                       decoration: InputDecoration(
                         hintText: message,
@@ -204,16 +204,16 @@ class CustomDialogs {
 
                     },
                     child: Container(
-                      padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
+                      padding:  const EdgeInsets.only(top: 20.0, bottom: 20.0),
                       decoration: BoxDecoration(
                         color: ColorUtils.app_primary_color,
-                        borderRadius: const BorderRadius.only(
-                            bottomLeft: const Radius.circular(32.0),
+                        borderRadius:  const BorderRadius.only(
+                            bottomLeft:  Radius.circular(32.0),
                             bottomRight: Radius.circular(32.0)),
                       ),
-                      child: const Text(
+                      child:  const Text(
                         "OK",
-                        style: const TextStyle(color: Colors.white),
+                        style:  TextStyle(color: Colors.white),
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -232,10 +232,10 @@ class CustomDialogs {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            shape: const RoundedRectangleBorder(
-                borderRadius: const BorderRadius.all(Radius.circular(32.0))),
-            contentPadding: const EdgeInsets.only(top: 10.0),
-            content: Container(
+            shape:  const RoundedRectangleBorder(
+                borderRadius:  BorderRadius.all(Radius.circular(32.0))),
+            contentPadding:  const EdgeInsets.only(top: 10.0),
+            content: SizedBox(
               width: 300.0,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -248,19 +248,19 @@ class CustomDialogs {
                     children: <Widget>[
                       Text(
                         title,
-                        style: const TextStyle(fontSize: 22.0),
+                        style:  const TextStyle(fontSize: 22.0),
                       ),
                     ],
                   ),
-                  const SizedBox(
+                   const SizedBox(
                     height: 5.0,
                   ),
-                  const Divider(
+                   const Divider(
                     color: Colors.grey,
                     height: 4.0,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 30.0, right: 30.0),
+                    padding:  const EdgeInsets.only(left: 30.0, right: 30.0),
                     child: TextField(
                       decoration: InputDecoration(
                         hintText: message,
@@ -276,14 +276,14 @@ class CustomDialogs {
                       //Navigator.pop(context);
                     },
                     child: Container(
-                      padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
+                      padding:  const EdgeInsets.only(top: 20.0, bottom: 20.0),
                       decoration: BoxDecoration(
                         color: ColorUtils.app_primary_color,
-                        borderRadius: const BorderRadius.only(
-                            bottomLeft: const Radius.circular(32.0),
-                            bottomRight: const Radius.circular(32.0)),
+                        borderRadius:  const BorderRadius.only(
+                            bottomLeft:  Radius.circular(32.0),
+                            bottomRight:  Radius.circular(32.0)),
                       ),
-                      child: const Text(
+                      child:  const Text(
                         "OK",
                         style: TextStyle(color: Colors.white),
                         textAlign: TextAlign.center,
@@ -303,8 +303,8 @@ class CustomDialogs {
         context: context,
         builder: (BuildContext dialogContext) {
           return AlertDialog(
-            shape: const RoundedRectangleBorder(
-                borderRadius: const BorderRadius.all(const Radius.circular(16.0))),
+            shape:  const RoundedRectangleBorder(
+                borderRadius:  BorderRadius.all( Radius.circular(16.0))),
             //contentPadding: EdgeInsets.only(top: 08.0),
             content: SizedBox(
               width: 300.0,
@@ -312,17 +312,17 @@ class CustomDialogs {
               child: Column(
                 // mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  const Text(
+                   const Text(
                     "Logout",
-                    style: const TextStyle(fontSize: 22.0),
+                    style:  TextStyle(fontSize: 22.0),
                   ),
-                  const Divider(
+                   const Divider(
                     color: Colors.grey,
                     height: 4.0,
                   ),
-                  const Padding(
-                    padding: const EdgeInsets.only(left: 30.0, right: 30.0),
-                    child: const TextField(
+                   const Padding(
+                    padding: EdgeInsets.only(left: 30.0, right: 30.0),
+                    child: TextField(
                       decoration: InputDecoration(
                         hintText: "Are you sure that you want to logout?",
                         border: InputBorder.none,
@@ -331,14 +331,14 @@ class CustomDialogs {
                       maxLines: 2,
                     ),
                   ),
-                  const SizedBox(
+                   const SizedBox(
                     height: 08,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const Spacer(),
+                       const Spacer(),
                       ElevatedButton(
                         onPressed: () async {
                           Navigator.pop(context);
@@ -346,11 +346,11 @@ class CustomDialogs {
                         },
                         style: ElevatedButton.styleFrom(
                             primary: ColorUtils.app_primary_color),
-                        child: const Text(
+                        child:  const Text(
                           "Cancel",
                         ),
                       ),
-                      const SizedBox(
+                       const SizedBox(
                         width: 08,
                       ),
                       ElevatedButton(
@@ -359,14 +359,14 @@ class CustomDialogs {
                   /*        DialogBuilder(context)
                               .showLoadingIndicator("Logging out");
                           var service = LoginFetchService();
-                          var res = await service.userLogout(Constants.userId);
+                          var res = await service.userLogout(ants.userId);
 
                           if (res.success) {
                             storage.deleteAll();
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const LoginScreen()),
+                                  builder: (context) =>  LoginScreen()),
                             );
                             Phoenix.rebirth(context);
                           }
@@ -377,11 +377,11 @@ class CustomDialogs {
                         },
                         style: ElevatedButton.styleFrom(
                             primary: ColorUtils.app_primary_color),
-                        child: const Text(
+                        child:  const Text(
                           "Logout",
                         ),
                       ),
-                      const SizedBox(
+                       const SizedBox(
                         width: 08,
                       )
                     ],
@@ -399,10 +399,10 @@ class CustomDialogs {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            shape: const RoundedRectangleBorder(
-                borderRadius: const BorderRadius.all(const Radius.circular(32.0))),
-            contentPadding: const EdgeInsets.only(top: 10.0),
-            content: Container(
+            shape:  const RoundedRectangleBorder(
+                borderRadius:  BorderRadius.all( Radius.circular(32.0))),
+            contentPadding:  const EdgeInsets.only(top: 10.0),
+            content: SizedBox(
               width: 300.0,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -415,19 +415,19 @@ class CustomDialogs {
                     children: <Widget>[
                       Text(
                         title,
-                        style: const TextStyle(fontSize: 24.0),
+                        style:  const TextStyle(fontSize: 24.0),
                       ),
                     ],
                   ),
-                  const SizedBox(
+                   const SizedBox(
                     height: 5.0,
                   ),
-                  const Divider(
+                   const Divider(
                     color: Colors.grey,
                     height: 4.0,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 30.0, right: 30.0),
+                    padding:  const EdgeInsets.only(left: 30.0, right: 30.0),
                     child: TextField(
                       decoration: InputDecoration(
                         hintText: message,
@@ -444,20 +444,20 @@ class CustomDialogs {
                   ),
                   Row(
                     children: [
-                      const Spacer(),
+                       const Spacer(),
                       ElevatedButton(
                         onPressed: () {
                           Navigator.pop(context);
                         },
                         style: ElevatedButton.styleFrom(
                             primary: ColorUtils.app_primary_color),
-                        child: const Text(
+                        child:  const Text(
                           "Cancel",
                           style: TextStyle(color: Colors.white),
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      const SizedBox(
+                       const SizedBox(
                         width: 08,
                       ),
                       ElevatedButton(
@@ -468,13 +468,13 @@ class CustomDialogs {
                         },
                         style: ElevatedButton.styleFrom(
                             primary: ColorUtils.app_primary_color),
-                        child: const Text(
+                        child:  const Text(
                           "Login",
                           style: TextStyle(color: Colors.white),
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      const SizedBox(
+                       const SizedBox(
                         width: 16,
                       ),
                     ],
@@ -492,22 +492,22 @@ class CustomDialogs {
           context: context,
           builder: (BuildContext dialogContext) {
             return AlertDialog(
-              shape: const RoundedRectangleBorder(
-                  borderRadius: const BorderRadius.all(const Radius.circular(16.0))),
+              shape:  const RoundedRectangleBorder(
+                  borderRadius:  BorderRadius.all( Radius.circular(16.0))),
               //contentPadding: EdgeInsets.only(top: 08.0),
-              content: Container(
+              content: SizedBox(
                 width: 300.0,
                 height: 168,
                 child: Column(
                   // mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    Text(
+                    const Text(
                       "fsfd",
-                      style: const TextStyle(fontSize: 22.0),
+                      style:  TextStyle(fontSize: 22.0),
                     ),
-                //    Constants.verticalDivider,
-                    const Padding(
-                      padding: const EdgeInsets.only(left: 30.0, right: 30.0),
+                //    ants.verticalDivider,
+                     const Padding(
+                      padding:  EdgeInsets.only(left: 30.0, right: 30.0),
                       child: TextField(
                         decoration: InputDecoration(
                           hintText:
@@ -518,7 +518,7 @@ class CustomDialogs {
                         maxLines: 3,
                       ),
                     ),
-                    const SizedBox(
+                     const SizedBox(
                       height: 08,
                     ),
                     Row(
@@ -533,11 +533,11 @@ class CustomDialogs {
                           },
                           style: ElevatedButton.styleFrom(
                               primary: ColorUtils.app_primary_color),
-                          child: const Text(
+                          child:  const Text(
                             "NO",
                           ),
                         ),
-                        const SizedBox(
+                         const SizedBox(
                           width: 08,
                         ),
                         ElevatedButton(
@@ -547,11 +547,11 @@ class CustomDialogs {
                           },
                           style: ElevatedButton.styleFrom(
                               primary: ColorUtils.app_primary_color),
-                          child: const Text(
+                          child:  const Text(
                             "YES",
                           ),
                         ),
-                        const SizedBox(
+                         const SizedBox(
                           width: 08,
                         )
                       ],

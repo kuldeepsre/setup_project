@@ -1,10 +1,8 @@
 part of 'form_bloc.dart';
-
 abstract class FormEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
-
 class ClickEvent extends FormEvent {
   final int buttonId;
   ClickEvent(this.buttonId);
@@ -17,6 +15,7 @@ class SignupEvent extends FormEvent {
   final int buttonId;
   SignupEvent(this.buttonId);
 }
+
 class SaveProfileEvent extends FormEvent {
   final int buttonId;
   SaveProfileEvent(this.buttonId);
