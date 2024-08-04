@@ -21,6 +21,16 @@ class FormBloc extends Bloc<FormEvent, FormState> {
           emit(FormFailure(error: "$e")); // Set state to error
         }
       }});
-
+    on<FormEvent>((event, emit) async {
+      if (event is ResetPasswordEvent) {
+        emit(FormLoading());
+        try {
+          // Fetch posts from repository
+          final posts = await postRepository.FormPosts();
+          emit(FormSuccess(msg: "Success")); // Set state to loaded with posts
+        } catch (e) {
+          emit(FormFailure(error: "$e")); // Set state to error
+        }
+      }});
   }
 }
