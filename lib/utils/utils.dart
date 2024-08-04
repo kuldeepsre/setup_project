@@ -16,7 +16,7 @@ class Utils {
   }
   static Future<http.Response> postApiCall(String url, var body) {
     var dt = jsonEncode(body);
-
+     print(dt);
     EndPoint.headers['token'] = EndPoint.user_token;
     return http.post(Uri.parse(url), body: dt);
   }

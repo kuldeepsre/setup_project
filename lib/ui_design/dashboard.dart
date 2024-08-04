@@ -8,6 +8,7 @@ import '../bloc/dashboard/bottom_navigation_event.dart';
 import '../bloc/dashboard/bottom_navigation_state.dart';
 import '../bloc/dashboard/dashboard_bloc.dart';
 import '../custom_drawer.dart';
+import 'form/login_form.dart';
 import 'home_page.dart';
 import 'map_screen.dart';
 import 'notificationm_screen.dart';
@@ -62,7 +63,8 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
             index: state.selectedIndex,
             children: [
               HomeScreen(),
-              MapScreen(),
+           //   MapScreen(),
+              LoginForm(),
               UserList()
             ],
           );

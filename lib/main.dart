@@ -8,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:setup_project/bloc/post_data/post_bloc.dart';
 import 'package:setup_project/repositry/UserRepository.dart';
 import 'package:setup_project/repositry/form_repository/form_repository.dart';
+import 'package:setup_project/repositry/form_repository/login_repo.dart';
 import 'package:setup_project/ui_design/dashboard.dart';
 import 'package:setup_project/utils/network_service.dart';
 import 'AppLocalizations.dart';
@@ -36,9 +37,9 @@ class MyApp extends StatelessWidget {
         BlocProvider<ThemeCubit>(create: (context) => ThemeCubit()),
         BlocProvider<LanguageCubit>(create: (context) => LanguageCubit()),
         BlocProvider<MapBloc>(create: (context) => MapBloc()),
-        BlocProvider<LoginBloc>(create: (context) => LoginBloc(networkService: NetworkService())),
         BlocProvider<BottomNavigationBloc>(create: (context) => BottomNavigationBloc()),
         BlocProvider<UserBloc>(create: (context) => UserBloc(UserRepositoryImpl(ApiService()))),
+        BlocProvider<LoginBloc>(create: (context) => LoginBloc(LoginPostRepositoryImpl(ApiService()))),
         BlocProvider<PostBloc>(create: (context) => PostBloc(PostRepositoryImpl(ApiService()))),
         BlocProvider<FormBloc>(create: (context) => FormBloc(FormPostRepositoryImpl(ApiService()))),
       ],

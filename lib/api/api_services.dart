@@ -1,8 +1,11 @@
 import 'dart:convert';
 
+import '../endpoint/constants.dart';
 import '../model/post_response.dart';
 import '../model/user_response.dart';
 import 'package:http/http.dart' as http;
+
+import '../utils/utils.dart';
 
 class ApiService {
   final String userApiUrl = 'https://jsonplaceholder.typicode.com/users';
@@ -50,6 +53,7 @@ class ApiService {
       throw Exception('Failed to load posts');
     }
   }
+
   Future<List<Post>> FormPosts() async {
     final response = await http.post(Uri.parse(postApiUrl));
     if (response.statusCode == 200) {
@@ -58,5 +62,22 @@ class ApiService {
     } else {
       throw Exception('Failed to load posts');
     }
+  }
+
+  Future<Map<String, dynamic>> login(String username, String password) async {
+    // Implement your API call logic here
+    var res = await Utils.postApiCall(EndPoint.POST_LOGIN, {
+      'username': username,
+      "password": password,
+      // "AppVersion": AppVersion
+    });
+     print(res);
+
+    var jsonresult = json.decode(res.body);
+    // LoginData  loginResponse=LoginData.fromJson(jsonresult);
+    // if(loginResponse.result![0].msg=='Success')
+
+    await Future.delayed(Duration(seconds: 2)); // Simulate network delay
+    return {'success': username == 'user' && password == 'password'};
   }
 }
