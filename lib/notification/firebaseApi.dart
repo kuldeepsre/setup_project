@@ -28,10 +28,18 @@ class FirebaseApi {
 
   void handleMessage(RemoteMessage? message) {
     if (message == null) return;
-    navigatorKey.currentState?.pushNamed(RoutePaths.dashboard,
-        arguments: message.notification);
-  }
+    navigatorKey.currentState?.pushNamed(
+      RoutePaths.NotificationScreen,
+      arguments: {
+        'payload': message.notification?.body,
+        'notificationCount': _notificationCount,
+      },
+    );
 
+/*    navigatorKey.currentState?.pushNamed(RoutePaths.dashboard,
+        arguments: message.notification);*/
+
+      }
   Future<void> _incrementBadgeCount() async {
     _notificationCount++;
     print('Incrementing badge count to $_notificationCount');  // Debugging line
@@ -81,9 +89,15 @@ class FirebaseApi {
     await localNotification.initialize(
       settings,
       onDidReceiveNotificationResponse: (payload) async {
-        if (payload != null) {
-          navigatorKey.currentState?.pushNamed(RoutePaths.dashboard,
-              arguments: payload.toString());
+
+          if (payload != null) {
+            navigatorKey.currentState?.pushNamed(
+              RoutePaths.NotificationScreen,
+              arguments: {
+                'payload': payload.toString(),
+                'notificationCount': _notificationCount,
+              },
+            );;
         }
         FlutterAppBadger.removeBadge();
         _notificationCount = 0;

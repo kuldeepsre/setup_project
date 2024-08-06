@@ -39,6 +39,8 @@ class AppLocalizations {
       LocalizationKeys.resetPassword: 'Reset Password',
       LocalizationKeys.sent: 'Sent',
       LocalizationKeys.signUp: 'Sign Up',
+      //Profile
+      LocalizationKeys.firstName: 'First Name',
     },
     'hi': {
       LocalizationKeys.title: 'डे नाइट मोड उदाहरण',

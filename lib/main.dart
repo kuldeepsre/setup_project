@@ -106,10 +106,8 @@ class _SplashScreenState extends State<SplashScreen> {
     return Timer(const Duration(seconds: 2), onDoneLoading);
   }
   onDoneLoading() async {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) =>  MyHomePage()),
-    );
+   Navigator.of(context).pushReplacementNamed('/dashboard');
+
   }
 
   @override
