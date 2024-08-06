@@ -102,15 +102,10 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     loadData();
   }
-
-
-
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 2), onDoneLoading);
   }
-
   onDoneLoading() async {
-
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) =>  MyHomePage()),
