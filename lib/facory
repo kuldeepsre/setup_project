@@ -1,0 +1,48 @@
+abstract class Product{
+  void use()
+}
+
+class ConcreatProductA implements Product{
+
+ @override
+  void use() {
+    print('Using ConcreteProductA');
+  }
+
+}
+
+class ConcreateProctB implements product{
+
+ @override
+  void use() {
+    print('Using ConcreteProductB');
+  }
+}
+
+abstract class ProductFactory {
+  Product createProduct();
+}
+
+class ConcreteFactoryA implements ProductFactory {
+  @override
+  Product createProduct() {
+    return ConcreteProductA();
+  }
+}
+
+class ConcreteFactoryB implements ProductFactory {
+  @override
+  Product createProduct() {
+    return ConcreteProductB();
+  }
+}
+
+void main() {
+  ProductFactory factoryA = ConcreteFactoryA();
+  Product productA = factoryA.createProduct();
+  productA.use(); // Output: Using ConcreteProductA
+
+  ProductFactory factoryB = ConcreteFactoryB();
+  Product productB = factoryB.createProduct();
+  productB.use(); // Output: Using ConcreteProductB
+}

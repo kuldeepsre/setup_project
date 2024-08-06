@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -22,8 +23,21 @@ import 'bloc/map/map_bloc.dart';
 import 'bloc/them/ThemeCubit.dart';
 import 'bloc/user/user_bloc.dart';
 import 'common_button/LocalizationKeys.dart';
+import 'notification/firebaseApi.dart';
+final navigatorKey = GlobalKey<NavigatorState>();
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-void main() {
+  await Firebase.initializeApp(
+      name:"Dream APP" ,
+      options: const FirebaseOptions(
+        appId: "1:1039174444499:android:cf800ebbb4f1365bfa7b26",
+        messagingSenderId: "927744815392 ",
+        projectId: "setup-41124",
+        apiKey: "AIzaSyDChpRkU11LVLPuh_l12O7O1r_lFoFOlNQ",
+      ));
+  await FirebaseApi().initNotification();
+
   runApp( MyApp());
 }
 class MyApp extends StatelessWidget {

@@ -25,6 +25,9 @@
               android:resource="@style/NormalTheme"
               />
             <meta-data
+                android:name="com.google.firebase.messaging.default_notification_channel_id"
+                android:value="high_importance_channel"/>
+            <meta-data
                 android:name="android.support.annotation.RequiresPermission"
                 android:value="android.permission.ACCESS_BACKGROUND_LOCATION"/>
             <intent-filter>

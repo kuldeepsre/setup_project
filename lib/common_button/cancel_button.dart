@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:setup_project/utils/text_style.dart';
-
 class CancelButton extends StatelessWidget {
   final VoidCallback onPressed;
   final String title;

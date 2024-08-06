@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../utils/app_values.dart';
 import '../../../utils/colors.dart';
 import '../model/media.dart';
-
-
-
 class SliderCard extends StatelessWidget {
   const SliderCard({
     super.key,
