@@ -72,4 +72,4 @@ const bottomLineGray = Color(0xFF737373);
 //New Theme
 const alice = Color(0xFF1395BA);
 const aliceDarker = Color(0xFF055366);
-const secondary_new = Color(0xFFF16C20);
+
