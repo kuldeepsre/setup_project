@@ -131,7 +131,7 @@ class FirebaseApi {
   }
   void _navigateToNotificationScreen(RemoteMessage message) {
     final payload = message.data;
-    navigatorKey.currentState?.pushNamed(
+      navigatorKey.currentState?.pushNamed(
       RoutePaths.NotificationScreen,
       arguments: {
         'payload': jsonEncode(payload),

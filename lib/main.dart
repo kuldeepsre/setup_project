@@ -24,12 +24,10 @@ import 'bloc/them/ThemeCubit.dart';
 import 'bloc/user/user_bloc.dart';
 import 'common_button/LocalizationKeys.dart';
 import 'notification/firebaseApi.dart';
-
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   await Firebase.initializeApp(
       name: "Dream APP",
       options: const FirebaseOptions(
@@ -41,7 +39,6 @@ Future<void> main() async {
   await FirebaseApi().initNotification();
   runApp(MyApp());
 }
-
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
