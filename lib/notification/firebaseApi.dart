@@ -67,6 +67,7 @@ class FirebaseApi {
     // Handle notifications that launch the app
     FirebaseMessaging.instance.getInitialMessage().then((message) {
       terminateNotification(message);
+      _navigateToNotificationScreen(message!);
     });
 
     // Handle notifications while the app is in the background
@@ -108,27 +109,11 @@ class FirebaseApi {
     const settings = InitializationSettings(android: android);
     await localNotification.initialize(
       settings,
-      onDidReceiveNotificationResponse: (payload) async {
+      onDidReceiveNotificationResponse: (NotificationResponse response) async {
+        final String? payload = response.payload;
         if (payload != null) {
-
-          navigatorKey.currentState?.pushNamed(
-            '/notification',
-            arguments: {
-              'payload': payload,
-              'notificationCount': _notificationCount, // Adjust as needed
-            },
-          );
-         /* navigatorKey.currentState?.pushNamed(
-            RoutePaths.NotificationScreen,
-            arguments: {
-              'payload': payload.toString(),
-              'notificationCount': _notificationCount,
-            },
-          );*/
+          _navigateToNotificationScreenFromPayload(payload);
         }
-        FlutterAppBadger.removeBadge();
-        _notificationCount = 0;
-        print('Removed badge count to $_notificationCount');  // Debugging line
       },
     );
 
@@ -144,4 +129,26 @@ class FirebaseApi {
     initPushNotification();
     initLocalNotification();
   }
+  void _navigateToNotificationScreen(RemoteMessage message) {
+    final payload = message.data;
+    navigatorKey.currentState?.pushNamed(
+      RoutePaths.NotificationScreen,
+      arguments: {
+        'payload': jsonEncode(payload),
+        'notificationCount': _notificationCount,
+      },
+    );
+  }
+  void _navigateToNotificationScreenFromPayload(String payload) {
+    final data = jsonDecode(payload) as Map<String, dynamic>;
+    print(data);
+    navigatorKey.currentState?.pushNamed(
+      RoutePaths.NotificationScreen,
+      arguments: {
+        'payload': payload,
+        'notificationCount': _notificationCount,
+      },
+    );
+  }
 }
+

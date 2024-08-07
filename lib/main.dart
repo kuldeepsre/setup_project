@@ -10,8 +10,6 @@ import 'package:setup_project/bloc/post_data/post_bloc.dart';
 import 'package:setup_project/repositry/UserRepository.dart';
 import 'package:setup_project/repositry/form_repository/form_repository.dart';
 import 'package:setup_project/repositry/form_repository/login_repo.dart';
-import 'package:setup_project/ui_design/home_page.dart';
-import 'package:setup_project/ui_design/notification_screen.dart';
 
 import 'AppLocalizations.dart';
 import 'package:http/http.dart' as http;
@@ -27,7 +25,7 @@ import 'bloc/user/user_bloc.dart';
 import 'common_button/LocalizationKeys.dart';
 import 'notification/firebaseApi.dart';
 
-final navigatorKey = GlobalKey<NavigatorState>();
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -87,11 +85,11 @@ class MyApp extends StatelessWidget {
                   Locale('de', 'DE'),
                 ],
                 initialRoute: '/',
-                routes: {
+          /*      routes: {
                   '/': (context) => SplashScreen(),
                   '/notification': (context) => NotificationScreen(),
                   // Add other routes here
-                },
+                },*/
                 onGenerateRoute: RouteGenerator.generateRoute,
                 debugShowCheckedModeBanner: false,
                 // home: MyHomePage(),
