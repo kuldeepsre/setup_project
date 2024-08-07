@@ -14,7 +14,7 @@ class ButtonWidget extends StatelessWidget {
   final double? elevation;
   final TextStyle? textStyle;
 
-  ButtonWidget({
+  const ButtonWidget({
     this.btnText,
     this.btnClick,
     this.borderRadius,

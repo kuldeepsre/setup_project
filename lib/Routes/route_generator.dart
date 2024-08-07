@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:setup_project/ui_design/dashboard.dart';
 
 import '../main.dart';
+import '../ui_design/OnboardingScreen.dart';
+import '../ui_design/OnboardingScreen.dart';
 import '../ui_design/notification_screen.dart';
 
 class RouteGenerator {
@@ -13,6 +15,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const SplashScreen());
       case RoutePaths.dashboard:
         return MaterialPageRoute(builder: (_) => MyHomePage());
+    case RoutePaths.OnboardingScreen:
+        return MaterialPageRoute(builder: (_) => OnboardingScreen());
 
       case RoutePaths.NotificationScreen:
 
@@ -51,4 +55,5 @@ class RoutePaths {
   static const String forgotPassword = '/forgotPassword';
   static const String changepassword = '/changepassword';
   static const String setting = '/setting';
+  static const String OnboardingScreen = '/OnboardingScreen';
 }
