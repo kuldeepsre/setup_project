@@ -6,8 +6,6 @@ class NotificationScreen extends StatelessWidget {
     final args = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     final payload = args['payload'] as String?;
     final notificationCount = args['notificationCount'] as int;
-
-
     return Scaffold(
       appBar: AppBar(title: Text("Notification Screen")),
       body: Center(
