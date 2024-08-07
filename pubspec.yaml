@@ -50,7 +50,8 @@ dependencies:
   flutter_local_notifications: ^16.3.0
   firebase_analytics: ^10.8.0
   firebase_core: ^2.24.2
-  firebase_messaging: ^14.7.10
+  # firebase_messaging: ^14.7.10
+  firebase_messaging: ^14.0.0
   flutter_app_badger: ^1.5.0
   cloud_firestore: ^4.14.0
   firebase_storage: ^11.6.0
@@ -101,8 +102,8 @@ flutter:
           weight: 400
         - asset: assets/fonts/Montserrat-Medium.ttf
           weight: 500
-        - asset: assets/fonts/Montserrat-SemiBold.ttf
-          weight: 600
+#        - asset: assets/fonts/Montserrat-SemiBold.ttf
+#          weight: 600
         - asset: assets/fonts/Montserrat-Bold.ttf
           weight: 700
         - asset: assets/fonts/Montserrat-ExtraBold.ttf

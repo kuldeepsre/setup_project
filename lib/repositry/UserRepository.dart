@@ -1,3 +1,5 @@
+import 'package:setup_project/model/productr_res.dart';
+
 import '../api/api_services.dart';
 import '../model/post_response.dart';
 import '../model/user_response.dart';
@@ -5,6 +7,7 @@ import '../model/user_response.dart';
 abstract class UserRepository {
   Future<List<User>> getUsers();
   Future<List<User>> getUser({int page = 1, int perPage = 10});
+  Future<List<Product>> getProduct({int page = 1, int perPage = 10});
 }
 
 abstract class PostRepository {
@@ -24,6 +27,12 @@ class UserRepositoryImpl implements UserRepository {
   @override
   Future<List<User>> getUser({int page = 1, int perPage = 10}) async {
     return await apiService.fetchUserData();
+  }
+
+  @override
+  Future<List<Product>> getProduct({int page = 1, int perPage = 10}) async {
+
+    return await apiService.fetchUserProduct();
   }
 
 

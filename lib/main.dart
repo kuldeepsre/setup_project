@@ -10,8 +10,7 @@ import 'package:setup_project/bloc/post_data/post_bloc.dart';
 import 'package:setup_project/repositry/UserRepository.dart';
 import 'package:setup_project/repositry/form_repository/form_repository.dart';
 import 'package:setup_project/repositry/form_repository/login_repo.dart';
-import 'package:setup_project/ui_design/dashboard.dart';
-import 'package:setup_project/utils/network_service.dart';
+
 import 'AppLocalizations.dart';
 import 'package:http/http.dart' as http;
 import 'Routes/route_generator.dart';
@@ -20,16 +19,19 @@ import 'bloc/dashboard/dashboard_bloc.dart';
 import 'bloc/form_post/form_bloc.dart';
 import 'bloc/login/login_bloc.dart';
 import 'bloc/map/map_bloc.dart';
+import 'bloc/product/product_bloc.dart';
 import 'bloc/them/ThemeCubit.dart';
 import 'bloc/user/user_bloc.dart';
 import 'common_button/LocalizationKeys.dart';
 import 'notification/firebaseApi.dart';
+
 final navigatorKey = GlobalKey<NavigatorState>();
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp(
-      name:"Dream APP" ,
+      name: "Dream APP",
       options: const FirebaseOptions(
         appId: "1:1039174444499:android:cf800ebbb4f1365bfa7b26",
         messagingSenderId: "927744815392 ",
@@ -37,25 +39,31 @@ Future<void> main() async {
         apiKey: "AIzaSyDChpRkU11LVLPuh_l12O7O1r_lFoFOlNQ",
       ));
   await FirebaseApi().initNotification();
-
-  runApp( MyApp());
+  runApp(MyApp());
 }
-class MyApp extends StatelessWidget {
 
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
-
     return MultiProvider(
       providers: [
         BlocProvider<ThemeCubit>(create: (context) => ThemeCubit()),
         BlocProvider<LanguageCubit>(create: (context) => LanguageCubit()),
         BlocProvider<MapBloc>(create: (context) => MapBloc()),
-        BlocProvider<BottomNavigationBloc>(create: (context) => BottomNavigationBloc()),
-        BlocProvider<UserBloc>(create: (context) => UserBloc(UserRepositoryImpl(ApiService()))),
-        BlocProvider<LoginBloc>(create: (context) => LoginBloc(LoginPostRepositoryImpl(ApiService()))),
-        BlocProvider<PostBloc>(create: (context) => PostBloc(PostRepositoryImpl(ApiService()))),
-        BlocProvider<FormBloc>(create: (context) => FormBloc(FormPostRepositoryImpl(ApiService()))),
+        BlocProvider<BottomNavigationBloc>(
+            create: (context) => BottomNavigationBloc()),
+        BlocProvider<UserBloc>(
+            create: (context) => UserBloc(UserRepositoryImpl(ApiService()))),
+        BlocProvider<ProductBloc>(
+            create: (context) => ProductBloc(UserRepositoryImpl(ApiService()))),
+        BlocProvider<LoginBloc>(
+            create: (context) =>
+                LoginBloc(LoginPostRepositoryImpl(ApiService()))),
+        BlocProvider<PostBloc>(
+            create: (context) => PostBloc(PostRepositoryImpl(ApiService()))),
+        BlocProvider<FormBloc>(
+            create: (context) =>
+                FormBloc(FormPostRepositoryImpl(ApiService()))),
       ],
       child: BlocBuilder<ThemeCubit, ThemeState>(
         builder: (themeContext, themeState) {
@@ -87,6 +95,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
@@ -102,11 +111,13 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     loadData();
   }
+
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 2), onDoneLoading);
   }
+
   onDoneLoading() async {
-     Navigator.of(context).pushReplacementNamed('/OnboardingScreen');
+    Navigator.of(context).pushReplacementNamed('/ProductsPage');
   }
 
   @override
@@ -145,8 +156,6 @@ class _SplashScreenState extends State<SplashScreen> {
               ],
             ),
           ),
-
-
         ],
       ),
     );

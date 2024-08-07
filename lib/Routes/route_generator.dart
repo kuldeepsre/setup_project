@@ -6,6 +6,7 @@ import '../main.dart';
 import '../ui_design/OnboardingScreen.dart';
 import '../ui_design/OnboardingScreen.dart';
 import '../ui_design/notification_screen.dart';
+import '../ui_design/products_page.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -17,6 +18,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => MyHomePage());
     case RoutePaths.OnboardingScreen:
         return MaterialPageRoute(builder: (_) => OnboardingScreen());
+        case RoutePaths.ProductsPage:
+        return MaterialPageRoute(builder: (_) => ProductsPage());
 
       case RoutePaths.NotificationScreen:
 
@@ -56,4 +59,5 @@ class RoutePaths {
   static const String changepassword = '/changepassword';
   static const String setting = '/setting';
   static const String OnboardingScreen = '/OnboardingScreen';
+  static const String ProductsPage = '/ProductsPage';
 }

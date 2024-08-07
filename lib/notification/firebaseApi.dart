@@ -6,6 +6,12 @@ import '../Routes/route_generator.dart';
 import '../main.dart';
 
 import 'package:flutter_app_badger/flutter_app_badger.dart';
+import 'dart:convert';
+import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter_app_badger/flutter_app_badger.dart'; // Ensure you have this dependency
+
 Future<void> handleBackgroundMessage(RemoteMessage message) async {
   print("Title: ${message.notification?.title}");
   print("Body: ${message.notification?.body}");
@@ -33,27 +39,47 @@ class FirebaseApi {
         'notificationCount': _notificationCount,
       },
     );
+  }
 
-/*    navigatorKey.currentState?.pushNamed(RoutePaths.dashboard,
-        arguments: message.notification);*/
-
-      }
   Future<void> _incrementBadgeCount() async {
     _notificationCount++;
     print('Incrementing badge count to $_notificationCount');  // Debugging line
     FlutterAppBadger.updateBadgeCount(_notificationCount);
   }
 
+  Future<void> terminateNotification(RemoteMessage? message) async {
+    if (message == null) return;
+
+    // Handle the notification data or navigate to a specific screen
+    print("Handling terminated notification: ${message.notification?.title}");
+    navigatorKey.currentState?.pushNamed(
+      RoutePaths.NotificationScreen,
+      arguments: {
+        'payload': message.notification?.body,
+        'notificationCount': _notificationCount,
+      },
+    );
+  }
+
   Future initPushNotification() async {
-    await FirebaseMessaging.instance
-        .setForegroundNotificationPresentationOptions(
+    await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
       alert: true,
       badge: true,
       sound: true,
     );
-    FirebaseMessaging.instance.getInitialMessage().then(handleMessage);
+
+    // Handle notifications that launch the app
+    FirebaseMessaging.instance.getInitialMessage().then((message) {
+      terminateNotification(message);
+    });
+
+    // Handle notifications while the app is in the background
     FirebaseMessaging.onMessageOpenedApp.listen(handleMessage);
+
+    // Handle background notifications
     FirebaseMessaging.onBackgroundMessage(handleBackgroundMessage);
+
+    // Handle foreground notifications
     FirebaseMessaging.onMessage.listen((message) {
       final notification = message.notification;
       final data = message.data;
@@ -87,20 +113,18 @@ class FirebaseApi {
     await localNotification.initialize(
       settings,
       onDidReceiveNotificationResponse: (payload) async {
-
-          if (payload != null) {
-            navigatorKey.currentState?.pushNamed(
-              RoutePaths.NotificationScreen,
-              arguments: {
-                'payload': payload.toString(),
-                'notificationCount': _notificationCount,
-              },
-            );;
+        if (payload != null) {
+          navigatorKey.currentState?.pushNamed(
+            RoutePaths.NotificationScreen,
+            arguments: {
+              'payload': payload.toString(),
+              'notificationCount': _notificationCount,
+            },
+          );
         }
         FlutterAppBadger.removeBadge();
         _notificationCount = 0;
-        print('removeBadge badge count to $_notificationCount');  // Debugging line
-
+        print('Removed badge count to $_notificationCount');  // Debugging line
       },
     );
 
