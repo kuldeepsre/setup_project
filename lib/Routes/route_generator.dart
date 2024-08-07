@@ -20,15 +20,15 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => OnboardingScreen());
         case RoutePaths.ProductsPage:
         return MaterialPageRoute(builder: (_) => ProductsPage());
-
-      case RoutePaths.NotificationScreen:
-
-        return MaterialPageRoute(
-          builder: (context) => NotificationScreen(
-            payload: arguments?['payload'],
-            notificationCount: arguments?['notificationCount'] ?? 0,
-          ),
-        );
+      //
+      // case RoutePaths.NotificationScreen:
+      //
+      //   return MaterialPageRoute(
+      //     builder: (context) => NotificationScreen(
+      //       payload: arguments?['payload'],
+      //       notificationCount: arguments?['notificationCount'] ?? 0,
+      //     ),
+      //   );
 
       default:
         return _errorRoute();

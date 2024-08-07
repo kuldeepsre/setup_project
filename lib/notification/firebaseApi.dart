@@ -6,11 +6,7 @@ import '../Routes/route_generator.dart';
 import '../main.dart';
 
 import 'package:flutter_app_badger/flutter_app_badger.dart';
-import 'dart:convert';
-import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter_app_badger/flutter_app_badger.dart'; // Ensure you have this dependency
+
 
 Future<void> handleBackgroundMessage(RemoteMessage message) async {
   print("Title: ${message.notification?.title}");
@@ -33,10 +29,10 @@ class FirebaseApi {
   void handleMessage(RemoteMessage? message) {
     if (message == null) return;
     navigatorKey.currentState?.pushNamed(
-      RoutePaths.NotificationScreen,
+      '/notification',
       arguments: {
         'payload': message.notification?.body,
-        'notificationCount': _notificationCount,
+        'notificationCount': 1, // Adjust as needed
       },
     );
   }
@@ -53,10 +49,10 @@ class FirebaseApi {
     // Handle the notification data or navigate to a specific screen
     print("Handling terminated notification: ${message.notification?.title}");
     navigatorKey.currentState?.pushNamed(
-      RoutePaths.NotificationScreen,
+      '/notification',
       arguments: {
         'payload': message.notification?.body,
-        'notificationCount': _notificationCount,
+        'notificationCount': _notificationCount, // Adjust as needed
       },
     );
   }
@@ -114,13 +110,21 @@ class FirebaseApi {
       settings,
       onDidReceiveNotificationResponse: (payload) async {
         if (payload != null) {
+
           navigatorKey.currentState?.pushNamed(
+            '/notification',
+            arguments: {
+              'payload': payload,
+              'notificationCount': _notificationCount, // Adjust as needed
+            },
+          );
+         /* navigatorKey.currentState?.pushNamed(
             RoutePaths.NotificationScreen,
             arguments: {
               'payload': payload.toString(),
               'notificationCount': _notificationCount,
             },
-          );
+          );*/
         }
         FlutterAppBadger.removeBadge();
         _notificationCount = 0;

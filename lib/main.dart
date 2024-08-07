@@ -10,6 +10,8 @@ import 'package:setup_project/bloc/post_data/post_bloc.dart';
 import 'package:setup_project/repositry/UserRepository.dart';
 import 'package:setup_project/repositry/form_repository/form_repository.dart';
 import 'package:setup_project/repositry/form_repository/login_repo.dart';
+import 'package:setup_project/ui_design/home_page.dart';
+import 'package:setup_project/ui_design/notification_screen.dart';
 
 import 'AppLocalizations.dart';
 import 'package:http/http.dart' as http;
@@ -70,6 +72,7 @@ class MyApp extends StatelessWidget {
           return BlocBuilder<LanguageCubit, LanguageState>(
             builder: (languageContext, languageState) {
               return MaterialApp(
+                navigatorKey: navigatorKey,
                 title: 'Day Night Mode Example',
                 theme: themeState.themeData,
                 locale: languageState.locale,
@@ -84,6 +87,11 @@ class MyApp extends StatelessWidget {
                   Locale('de', 'DE'),
                 ],
                 initialRoute: '/',
+                routes: {
+                  '/': (context) => SplashScreen(),
+                  '/notification': (context) => NotificationScreen(),
+                  // Add other routes here
+                },
                 onGenerateRoute: RouteGenerator.generateRoute,
                 debugShowCheckedModeBanner: false,
                 // home: MyHomePage(),
