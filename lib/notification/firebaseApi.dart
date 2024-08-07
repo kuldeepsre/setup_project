@@ -6,8 +6,6 @@ import '../Routes/route_generator.dart';
 import '../main.dart';
 
 import 'package:flutter_app_badger/flutter_app_badger.dart';
-
-
 Future<void> handleBackgroundMessage(RemoteMessage message) async {
   print("Title: ${message.notification?.title}");
   print("Body: ${message.notification?.body}");

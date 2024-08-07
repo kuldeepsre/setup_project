@@ -48,3 +48,28 @@ const transparent = Colors.transparent;
 const ratingIconColor = Color(0xffffbe21);
 const circleDotColor = Color(0x33ffffff);
 const iconContainerColor = Color(0xB2272830);
+
+
+const primaryDark = Color(0xFF34283E);
+const onBoard = Color.fromRGBO(42, 3, 75, 0.3);
+const onSecondary = Colors.white;
+const lightGray = Color(0xFFE1E1E1);
+const lightGray1 = Color(0xFFECECEC);
+const textGray = Color(0xFF9B9B9B);
+const blendColor = Color(0xFF1D2332);
+const blendColor1 = Color(0xFF34283E);
+const darkOrange = Color(0xFFD23A3A);
+const lightOrange = Color(0xFFF49763);
+const lightRed = Color(0xFFCE3E3E);
+const star = Color(0xFFF2994A);
+const lineGray = Color(0xFFE3E3E3);
+const catItem = Color(0xFF605A65);
+const green = Color(0xFF76B559);
+const blue = Color(0xFF5D72E1);
+const purple = Color(0xFFB768B9);
+const yellow = Color(0xFFE5D227);
+const bottomLineGray = Color(0xFF737373);
+//New Theme
+const alice = Color(0xFF1395BA);
+const aliceDarker = Color(0xFF055366);
+const secondary_new = Color(0xFFF16C20);
