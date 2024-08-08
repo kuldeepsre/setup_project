@@ -21,9 +21,11 @@ class RouteGenerator {
       case RoutePaths.ProductsPage:
         return MaterialPageRoute(builder: (_) => ProductsPage());
       case RoutePaths.NotificationScreen:
+      case RoutePaths.NotificationScreen:
         return MaterialPageRoute(
           builder: (_) => NotificationScreen(
-
+            notifications: arguments?['notifications'] ?? [],
+            notificationCount: arguments?['notificationCount'] ?? 0,
           ),
         );
       default:
