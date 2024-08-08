@@ -1,35 +1,43 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 
+import '../notification/firebaseApi.dart';
 class NotificationScreen extends StatelessWidget {
-  final List<Map<String, dynamic>> notifications;
+  final List<RemoteMessage> notifications;
   final int notificationCount;
 
-  const NotificationScreen({
-    Key? key,
+  NotificationScreen({
     required this.notifications,
-    this.notificationCount = 0,
-  }) : super(key: key);
+    required this.notificationCount,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Notifications (${notificationCount})'),
+        title: Text('Notifications'),
       ),
-      body: ListView.builder(
-        itemCount: notifications.length,
-        itemBuilder: (context, index) {
-          final notification = notifications[index];
-          return ListTile(
-            title: Text(notification['title'] ?? 'No Title'),
-            subtitle: Text(notification['body'] ?? 'No Body'),
-            onTap: () {
-              // Handle tap on notification
-            },
-          );
-        },
+      body: Column(
+        children: [
+          Text('You have $notificationCount notifications'),
+          Expanded(
+            child: ListView.builder(
+              itemCount: notifications.length,
+              itemBuilder: (context, index) {
+                final notification = notifications[index];
+                return ListTile(
+                  title: Text(notification.notification?.title ?? 'No Title'),
+                  subtitle: Text(notification.notification?.body ?? 'No Body'),
+                  onTap: () {
+                    // Handle notification tap
+                  },
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
