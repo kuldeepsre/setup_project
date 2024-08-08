@@ -8,11 +8,6 @@ import '../main.dart';
 import 'package:flutter_app_badger/flutter_app_badger.dart';
 
 
-Future<void> handleBackgroundMessage(RemoteMessage message) async {
-  print("Title: ${message.notification?.title}");
-  print("Body: ${message.notification?.body}");
-  print("Payload: ${message.data}");
-}
 
 class FirebaseApi {
   final _firebaseMessaging = FirebaseMessaging.instance;
@@ -26,17 +21,33 @@ class FirebaseApi {
   final localNotification = FlutterLocalNotificationsPlugin();
   int _notificationCount = 0;
 
+
+  // List to store notifications
+  List<RemoteMessage> _notifications = [];
+  Future<void> handleBackgroundMessage(RemoteMessage message) async {
+    print("Title: ${message.notification?.title}");
+    print("Body: ${message.notification?.body}");
+    print("Payload: ${message.data}");
+    _addNotification(message);
+  }
   void handleMessage(RemoteMessage? message) {
     if (message == null) return;
+    _addNotification(message);
+    final payload = message.data;
     navigatorKey.currentState?.pushNamed(
-      '/notification',
+      RoutePaths.NotificationScreen,
       arguments: {
-        'payload': message.notification?.body,
-        'notificationCount': 1, // Adjust as needed
+        'payload': jsonEncode(payload),
+        'notificationCount': _notificationCount,
       },
     );
   }
-
+  // Method to add notification to the list and increment badge count
+  void _addNotification(RemoteMessage message) {
+    _notifications.add(message);
+    _incrementBadgeCount();
+    print("Notification added: ${message.notification?.title}");
+  }
   Future<void> _incrementBadgeCount() async {
     _notificationCount++;
     print('Incrementing badge count to $_notificationCount');  // Debugging line
@@ -101,6 +112,8 @@ class FirebaseApi {
         );
         _incrementBadgeCount();
       }
+
+      _addNotification(message);
     });
   }
 
@@ -149,6 +162,11 @@ class FirebaseApi {
         'notificationCount': _notificationCount,
       },
     );
+  }
+
+  // Method to get the list of notifications
+  List<RemoteMessage> getNotifications() {
+    return _notifications;
   }
 }
 

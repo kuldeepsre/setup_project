@@ -16,21 +16,17 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const SplashScreen());
       case RoutePaths.dashboard:
         return MaterialPageRoute(builder: (_) => MyHomePage());
-    case RoutePaths.OnboardingScreen:
+      case RoutePaths.OnboardingScreen:
         return MaterialPageRoute(builder: (_) => OnboardingScreen());
-        case RoutePaths.ProductsPage:
+      case RoutePaths.ProductsPage:
         return MaterialPageRoute(builder: (_) => ProductsPage());
-
       case RoutePaths.NotificationScreen:
         return MaterialPageRoute(
           builder: (_) => NotificationScreen(
-            payload: arguments?['payload'],
+            notifications: arguments?['notifications'] ?? [],
             notificationCount: arguments?['notificationCount'] ?? 0,
           ),
         );
-
-
-
       default:
         return _errorRoute();
     }

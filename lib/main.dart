@@ -1,6 +1,8 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -36,9 +38,26 @@ Future<void> main() async {
         projectId: "setup-41124",
         apiKey: "AIzaSyDChpRkU11LVLPuh_l12O7O1r_lFoFOlNQ",
       ));
-  await FirebaseApi().initNotification();
+    await FirebaseApi().initNotification();
+
+/*  await _handleInitialMessage();*/
   runApp(MyApp());
 }
+
+Future<void> _handleInitialMessage() async {
+  final RemoteMessage? message = await FirebaseMessaging.instance.getInitialMessage();
+  if (message != null) {
+    final payload = message.data;
+    navigatorKey.currentState?.pushNamed(
+      RoutePaths.NotificationScreen,
+      arguments: {
+        'payload': jsonEncode(payload),
+        'notificationCount': 0, // Update as necessary
+      },
+    );
+  }
+}
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -81,12 +100,7 @@ class MyApp extends StatelessWidget {
                   Locale('hi', 'IN'),
                   Locale('de', 'DE'),
                 ],
-                initialRoute: '/',
-          /*      routes: {
-                  '/': (context) => SplashScreen(),
-                  '/notification': (context) => NotificationScreen(),
-                  // Add other routes here
-                },*/
+                initialRoute: RoutePaths.splashScreen,
                 onGenerateRoute: RouteGenerator.generateRoute,
                 debugShowCheckedModeBanner: false,
                 // home: MyHomePage(),
@@ -107,20 +121,14 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  Map<String, dynamic>? data;
-
   @override
   void initState() {
     super.initState();
-    loadData();
+    Timer(const Duration(seconds: 2), _navigateToHome);
   }
 
-  Future<Timer> loadData() async {
-    return Timer(const Duration(seconds: 2), onDoneLoading);
-  }
-
-  onDoneLoading() async {
-    Navigator.of(context).pushReplacementNamed('/ProductsPage');
+  void _navigateToHome() {
+    Navigator.of(context).pushReplacementNamed(RoutePaths.dashboard);
   }
 
   @override
@@ -128,38 +136,12 @@ class _SplashScreenState extends State<SplashScreen> {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
-    return Scaffold(
-      body: Stack(
-        fit: StackFit.expand,
-        children: <Widget>[
-          Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: <Color>[
-                  Colors.orange,
-                  Colors.green,
-                  Colors.blue,
-                ],
-              ),
-            ),
-          ),
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  AppLocalizations(context.read<LanguageCubit>().state.locale)
-                      .translate(LocalizationKeys.sHeader),
-                  style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-          ),
-        ],
+    return const Scaffold(
+      body: Center(
+        child: Text(
+          'Splash Screen',
+          style: TextStyle(fontSize: 24),
+        ),
       ),
     );
   }
