@@ -21,6 +21,7 @@ import 'bloc/dashboard/dashboard_bloc.dart';
 import 'bloc/form_post/form_bloc.dart';
 import 'bloc/login/login_bloc.dart';
 import 'bloc/map/map_bloc.dart';
+import 'bloc/notification/notification_bloc.dart';
 import 'bloc/product/product_bloc.dart';
 import 'bloc/them/ThemeCubit.dart';
 import 'bloc/user/user_bloc.dart';
@@ -40,23 +41,19 @@ Future<void> main() async {
       ));
     await FirebaseApi().initNotification();
 
-/*  await _handleInitialMessage();*/
+// Handle initial message
+//   final RemoteMessage? initialMessage = await FirebaseMessaging.instance.getInitialMessage();
+//   if (initialMessage != null) {
+//     _handleNotificationNavigation(initialMessage);
+//   }
+
+
+
   runApp(MyApp());
+
+
 }
 
-Future<void> _handleInitialMessage() async {
-  final RemoteMessage? message = await FirebaseMessaging.instance.getInitialMessage();
-  if (message != null) {
-    final payload = message.data;
-    navigatorKey.currentState?.pushNamed(
-      RoutePaths.NotificationScreen,
-      arguments: {
-        'payload': jsonEncode(payload),
-        'notificationCount': 0, // Update as necessary
-      },
-    );
-  }
-}
 
 class MyApp extends StatelessWidget {
   @override
@@ -80,6 +77,9 @@ class MyApp extends StatelessWidget {
         BlocProvider<FormBloc>(
             create: (context) =>
                 FormBloc(FormPostRepositoryImpl(ApiService()))),
+        BlocProvider<NotificationBloc>(
+          create: (context) => NotificationBloc(),
+        ),
       ],
       child: BlocBuilder<ThemeCubit, ThemeState>(
         builder: (themeContext, themeState) {

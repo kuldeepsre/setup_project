@@ -1,43 +1,45 @@
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../notification/firebaseApi.dart';
+import '../bloc/notification/notification_bloc.dart';
+
 class NotificationScreen extends StatelessWidget {
-  final List<RemoteMessage> notifications;
-  final int notificationCount;
-
-  NotificationScreen({
-    required this.notifications,
-    required this.notificationCount,
-  });
-
   @override
   Widget build(BuildContext context) {
+    final Map<String, dynamic>? arguments =
+    ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
+    final notifications = arguments?['notifications'] ?? [];
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Notifications'),
       ),
-      body: Column(
-        children: [
-          Text('You have $notificationCount notifications'),
-          Expanded(
-            child: ListView.builder(
-              itemCount: notifications.length,
-              itemBuilder: (context, index) {
-                final notification = notifications[index];
-                return ListTile(
-                  title: Text(notification.notification?.title ?? 'No Title'),
-                  subtitle: Text(notification.notification?.body ?? 'No Body'),
-                  onTap: () {
-                    // Handle notification tap
-                  },
-                );
-              },
-            ),
-          ),
-        ],
+      body: BlocBuilder<NotificationBloc, NotificationState>(
+        builder: (context, state) {
+          // Add the notifications to the BLoC state if needed
+          if (state is NotificationsLoaded) {
+            // This state should be updated with new notifications if needed
+            context.read<NotificationBloc>().add(NotificationReceived(
+                notifications[0]['title'],
+                notifications[0]['body']));
+          }
+
+          if (notifications.isEmpty) {
+            return Center(child: Text('No notifications available.'));
+          }
+
+          return ListView.builder(
+            itemCount: notifications.length,
+            itemBuilder: (context, index) {
+              final notification = notifications[index];
+              return ListTile(
+                title: Text(notification['title']),
+                subtitle: Text(notification['body']),
+              );
+            },
+          );
+        },
       ),
     );
   }

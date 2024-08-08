@@ -23,8 +23,7 @@ class RouteGenerator {
       case RoutePaths.NotificationScreen:
         return MaterialPageRoute(
           builder: (_) => NotificationScreen(
-            notifications: arguments?['notifications'] ?? [],
-            notificationCount: arguments?['notificationCount'] ?? 0,
+
           ),
         );
       default:
