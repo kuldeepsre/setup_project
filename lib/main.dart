@@ -15,6 +15,7 @@ import 'package:setup_project/repositry/form_repository/login_repo.dart';
 
 import 'AppLocalizations.dart';
 import 'package:http/http.dart' as http;
+import 'ExampleService.dart';
 import 'Routes/route_generator.dart';
 import 'api/api_services.dart';
 import 'bloc/dashboard/dashboard_bloc.dart';
@@ -80,6 +81,7 @@ class MyApp extends StatelessWidget {
         BlocProvider<NotificationBloc>(
           create: (context) => NotificationBloc(),
         ),
+        Provider<ExampleService>(create: (context) => ExampleService()),
       ],
       child: BlocBuilder<ThemeCubit, ThemeState>(
         builder: (themeContext, themeState) {
