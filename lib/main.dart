@@ -9,6 +9,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:setup_project/bloc/post_data/post_bloc.dart';
+import 'package:setup_project/provider/CheckboxProvider.dart';
 import 'package:setup_project/repositry/UserRepository.dart';
 import 'package:setup_project/repositry/form_repository/form_repository.dart';
 import 'package:setup_project/repositry/form_repository/login_repo.dart';
@@ -82,6 +83,7 @@ class MyApp extends StatelessWidget {
           create: (context) => NotificationBloc(),
         ),
         Provider<ExampleService>(create: (context) => ExampleService()),
+        ChangeNotifierProvider(create: (_) => CheckboxProvider()),
       ],
       child: BlocBuilder<ThemeCubit, ThemeState>(
         builder: (themeContext, themeState) {
