@@ -6,17 +6,14 @@ import 'package:setup_project/ui_design/CartScreen.dart';
 import '../bloc/product_bloc/cart/cart_bloc.dart';
 import '../bloc/product_bloc/product_bloc.dart';
 import '../repositry/PRODUCT_REPOSITORY.dart';
-
 class ProductListScreen extends StatefulWidget {
   @override
   _ProductListScreenState createState() => _ProductListScreenState();
 }
-
 class _ProductListScreenState extends State<ProductListScreen> {
   final TextEditingController _searchController = TextEditingController();
   double _minPrice = 0;
   double _maxPrice = 1000;
-
   @override
   void initState() {
     super.initState();
@@ -29,11 +26,9 @@ class _ProductListScreenState extends State<ProductListScreen> {
       }
     });
   }
-
   void _applyPriceFilter() {
     context.read<ProductBloc>().add(FilterByPrice(_minPrice, _maxPrice));
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -150,7 +145,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                   subtitle: Text(product.description),
                   trailing: Text('\$${product.price}'),
                   onTap: () {
-              /*      Navigator.push(
+                    /*      Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) => ProductDetailScreen(product: product),

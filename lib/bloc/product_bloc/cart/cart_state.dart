@@ -7,15 +7,22 @@ abstract class CartState extends Equatable {
 
 class CartInitial extends CartState {}
 
+// class CartLoaded extends CartState {
+//   final List<Product> cartItems;
+//
+//   CartLoaded(this.cartItems);
+//
+//   @override
+//   List<Object?> get props => [cartItems];
+// }
 class CartLoaded extends CartState {
-  final List<Product> cartItems;
+  final Map<Product, int> cartItems;
 
   CartLoaded(this.cartItems);
 
   @override
   List<Object?> get props => [cartItems];
 }
-
 class CartError extends CartState {
   final String message;
 

@@ -29,4 +29,3 @@ class ProductSearchResults extends ProductState {
   @override
   List<Object?> get props => [products];
 }
-

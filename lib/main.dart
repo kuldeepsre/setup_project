@@ -38,7 +38,7 @@ Future<void> main() async {
         projectId: "setup-41124",
         apiKey: "AIzaSyDChpRkU11LVLPuh_l12O7O1r_lFoFOlNQ",
       ));
-    await FirebaseApi().initNotification();
+  await FirebaseApi().initNotification();
 
 // Handle initial message
 //   final RemoteMessage? initialMessage = await FirebaseMessaging.instance.getInitialMessage();
@@ -66,7 +66,7 @@ class MyApp extends StatelessWidget {
             create: (context) => BottomNavigationBloc()),
         BlocProvider<UserBloc>(
             create: (context) => UserBloc(UserRepositoryImpl(ApiService()))),
-       /* BlocProvider<ProductBloc>(
+        /* BlocProvider<ProductBloc>(
             create: (context) => ProductBloc(UserRepositoryImpl(ApiService()))),*/
         BlocProvider<LoginBloc>(
             create: (context) =>
@@ -136,7 +136,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void _navigateToHome() {
-   // Navigator.of(context).pushReplacementNamed(RoutePaths.dashboard);
+    // Navigator.of(context).pushReplacementNamed(RoutePaths.dashboard);
     Navigator.of(context).pushReplacementNamed(RoutePaths.dashboard);
   }
 
