@@ -21,3 +21,12 @@ class ProductError extends ProductState {
   @override
   List<Object?> get props => [message];
 }
+class ProductSearchResults extends ProductState {
+  final List<Product> products;
+
+  ProductSearchResults(this.products);
+
+  @override
+  List<Object?> get props => [products];
+}
+

@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:setup_project/bloc/post_data/post_bloc.dart';
 import 'package:setup_project/provider/CheckboxProvider.dart';
+import 'package:setup_project/repositry/PRODUCT_REPOSITORY.dart';
 import 'package:setup_project/repositry/UserRepository.dart';
 import 'package:setup_project/repositry/form_repository/form_repository.dart';
 import 'package:setup_project/repositry/form_repository/login_repo.dart';
@@ -20,7 +21,8 @@ import 'bloc/form_post/form_bloc.dart';
 import 'bloc/login/login_bloc.dart';
 import 'bloc/map/map_bloc.dart';
 import 'bloc/notification/notification_bloc.dart';
-import 'bloc/product/product_bloc.dart';
+
+import 'bloc/product_bloc/product_bloc.dart';
 import 'bloc/them/ThemeCubit.dart';
 import 'bloc/user/user_bloc.dart';
 import 'notification/firebaseApi.dart';
@@ -63,8 +65,8 @@ class MyApp extends StatelessWidget {
             create: (context) => BottomNavigationBloc()),
         BlocProvider<UserBloc>(
             create: (context) => UserBloc(UserRepositoryImpl(ApiService()))),
-        BlocProvider<ProductBloc>(
-            create: (context) => ProductBloc(UserRepositoryImpl(ApiService()))),
+       /* BlocProvider<ProductBloc>(
+            create: (context) => ProductBloc(UserRepositoryImpl(ApiService()))),*/
         BlocProvider<LoginBloc>(
             create: (context) =>
                 LoginBloc(LoginPostRepositoryImpl(ApiService()))),
@@ -80,6 +82,9 @@ class MyApp extends StatelessWidget {
         ),
         Provider<ExampleService>(create: (context) => ExampleService()),
         ChangeNotifierProvider(create: (_) => CheckboxProvider()),
+        BlocProvider<ProductBloc>(
+            create: (context) => ProductBloc(ProductRepository())
+              ..add(FetchProducts())),
       ],
       child: BlocBuilder<ThemeCubit, ThemeState>(
         builder: (themeContext, themeState) {
