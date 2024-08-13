@@ -22,6 +22,7 @@ import 'bloc/login/login_bloc.dart';
 import 'bloc/map/map_bloc.dart';
 import 'bloc/notification/notification_bloc.dart';
 
+import 'bloc/product_bloc/cart/cart_bloc.dart';
 import 'bloc/product_bloc/product_bloc.dart';
 import 'bloc/them/ThemeCubit.dart';
 import 'bloc/user/user_bloc.dart';
@@ -79,6 +80,8 @@ class MyApp extends StatelessWidget {
                 FormBloc(FormPostRepositoryImpl(ApiService()))),
         BlocProvider<NotificationBloc>(
           create: (context) => NotificationBloc(),
+        ), BlocProvider<CartBloc>(
+          create: (context) => CartBloc(),
         ),
         Provider<ExampleService>(create: (context) => ExampleService()),
         ChangeNotifierProvider(create: (_) => CheckboxProvider()),

@@ -54,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Bottom Navigation & 3D Drawer with BLoC'),
+        title: const Text('home'),
         leading: null
       ),
       drawer: CustomDrawer(animationController: _animationController), // Use drawer to open from the left
