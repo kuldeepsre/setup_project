@@ -36,7 +36,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
         backgroundColor: Colors.white,
         title: const Text('Products'),
         actions: [
-          BlocBuilder<CartBloc, CartState>(
+      /*    BlocBuilder<CartBloc, CartState>(
             builder: (context, state) {
               int cartCount = 0;
               if (state is CartLoaded) {
@@ -71,62 +71,62 @@ class _ProductListScreenState extends State<ProductListScreen> {
                 },
               );
             },
-          ),
+          ),*/
         ],
-        // bottom: PreferredSize(
-        //   preferredSize: const Size.fromHeight(100),
-        //   child: Padding(
-        //     padding: const EdgeInsets.all(8.0),
-        //     child: Column(
-        //       children: [
-        //         Row(
-        //           children: [
-        //             Expanded(
-        //               child: TextField(
-        //                 controller: _searchController,
-        //                 decoration: const InputDecoration(
-        //                   border: OutlineInputBorder(),
-        //                   hintText: 'Search products',
-        //                 ),
-        //               ),
-        //             ),
-        //             IconButton(
-        //               icon: const Icon(Icons.clear),
-        //               onPressed: () {
-        //                 _searchController.clear();
-        //                 context.read<ProductBloc>().add(ClearSearch());
-        //               },
-        //             ),
-        //           ],
-        //         ),
-        //         const SizedBox(height: 8),
-        //         Row(
-        //           children: [
-        //             Expanded(
-        //               child: Text('Min Price: \$${_minPrice.toStringAsFixed(2)}'),
-        //             ),
-        //             Expanded(
-        //               child: Text('Max Price: \$${_maxPrice.toStringAsFixed(2)}'),
-        //             ),
-        //           ],
-        //         ),
-        //         RangeSlider(
-        //           min: 0,
-        //           max: 1000,
-        //           divisions: 100,
-        //           values: RangeValues(_minPrice, _maxPrice),
-        //           onChanged: (values) {
-        //             setState(() {
-        //               _minPrice = values.start;
-        //               _maxPrice = values.end;
-        //             });
-        //             _applyPriceFilter();
-        //           },
-        //         ),
-        //       ],
-        //     ),
-        //   ),
-        // ),
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(100),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        controller: _searchController,
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          hintText: 'Search products',
+                        ),
+                      ),
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.clear),
+                      onPressed: () {
+                        _searchController.clear();
+                        context.read<ProductBloc>().add(ClearSearch());
+                      },
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 8),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text('Min Price: \$${_minPrice.toStringAsFixed(2)}'),
+                    ),
+                    Expanded(
+                      child: Text('Max Price: \$${_maxPrice.toStringAsFixed(2)}'),
+                    ),
+                  ],
+                ),
+                RangeSlider(
+                  min: 0,
+                  max: 1000,
+                  divisions: 100,
+                  values: RangeValues(_minPrice, _maxPrice),
+                  onChanged: (values) {
+                    setState(() {
+                      _minPrice = values.start;
+                      _maxPrice = values.end;
+                    });
+                    _applyPriceFilter();
+                  },
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
       body: BlocBuilder<ProductBloc, ProductState>(
         builder: (context, state) {

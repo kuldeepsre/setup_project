@@ -8,8 +8,10 @@ import 'package:setup_project/ui_design/product_screen.dart';
 import '../bloc/dashboard/bottom_navigation_event.dart';
 import '../bloc/dashboard/bottom_navigation_state.dart';
 import '../bloc/dashboard/dashboard_bloc.dart';
+import '../bloc/product_bloc/cart/cart_bloc.dart';
 import '../custom_drawer.dart';
 
+import 'CartScreen.dart';
 import 'form/login_form.dart';
 import 'home_page.dart';
 
@@ -55,7 +57,44 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
     return Scaffold(
       appBar: AppBar(
         title: const Text('home'),
-        leading: null
+        actions: [
+          BlocBuilder<CartBloc, CartState>(
+            builder: (context, state) {
+              int cartCount = 0;
+              if (state is CartLoaded) {
+                cartCount = state.cartItems.length;
+              }
+              return IconButton(
+                icon: Stack(
+                  children: [
+                    const Icon(Icons.shopping_cart,color: Colors.green,),
+                    if (cartCount > 0)
+                      Positioned(
+                        right: 0,
+                        child: CircleAvatar(
+                          radius: 5,
+                          backgroundColor: Colors.red,
+                          foregroundColor: Colors.white,
+                          child: Text(
+                            cartCount.toString(),
+                            style: const TextStyle(fontSize: 12),
+                          ),
+                        ),
+                      ),
+                  ],
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CartScreen(),
+                    ),
+                  );
+                },
+              );
+            },
+          ),
+        ],
       ),
       drawer: CustomDrawer(animationController: _animationController), // Use drawer to open from the left
       body: BlocBuilder<BottomNavigationBloc, BottomNavigationState>(
