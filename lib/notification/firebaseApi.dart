@@ -59,11 +59,13 @@ class FirebaseApi {
 
     // Handle the notification data or navigate to a specific screen
     print("Handling terminated notification: ${message.notification?.title}");
+
+    final payload = message.data;
     navigatorKey.currentState?.pushNamed(
-      '/notification',
+      RoutePaths.NotificationScreen,
       arguments: {
-        'payload': message.notification?.body,
-        'notificationCount': _notificationCount, // Adjust as needed
+        'payload': payload,
+        'notificationCount': _notificationCount,
       },
     );
   }

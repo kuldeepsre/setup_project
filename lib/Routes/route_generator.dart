@@ -17,10 +17,10 @@ class RouteGenerator {
       case RoutePaths.dashboard:
         return MaterialPageRoute(builder: (_) => MyHomePage());
       case RoutePaths.OnboardingScreen:
-        return MaterialPageRoute(builder: (_) => OnboardingScreen());
+        return MaterialPageRoute(builder: (_) => const OnboardingScreen());
       case RoutePaths.ProductsPage:
-        return MaterialPageRoute(builder: (_) => ProductsPage());
-      case RoutePaths.NotificationScreen:
+        return MaterialPageRoute(builder: (_) => const ProductsPage());
+
       case RoutePaths.NotificationScreen:
         return MaterialPageRoute(
           builder: (_) => NotificationScreen(

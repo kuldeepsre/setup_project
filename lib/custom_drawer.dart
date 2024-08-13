@@ -1,18 +1,10 @@
 import 'package:flutter/material.dart';
-
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'bloc/dashboard/bottom_navigation_event.dart';
 import 'bloc/dashboard/dashboard_bloc.dart';
-
-import 'package:flutter/material.dart';
-
 class CustomDrawer extends StatelessWidget {
   final AnimationController animationController;
-
   CustomDrawer({required this.animationController});
-
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(

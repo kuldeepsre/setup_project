@@ -23,8 +23,13 @@ class  FormFailure extends FormState {
   List<Object> get props => [error];
 }
 
-class TokenExpired extends FormState {
-  final String msg;
-  TokenExpired({required this.msg});
+class UserTokenExpired extends FormState {
+  final String title, message;
+
+  UserTokenExpired({required this.title, required this.message});
 }
-class NoInternetConnection extends FormState {}
+class InternetConnectionChangedState extends FormState {
+  final bool isInternetConnected;
+
+  InternetConnectionChangedState({required this.isInternetConnected});
+}

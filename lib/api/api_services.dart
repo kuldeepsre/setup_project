@@ -13,7 +13,6 @@ class ApiService {
   final String userApiUrl = 'https://jsonplaceholder.typicode.com/users';
   final String postApiUrl = 'https://jsonplaceholder.typicode.com/posts';
   final String productApiUrl = 'https://dummyjson.com/products';
-
   Future<List<User>> fetchUsers() async {
     final response = await http.get(Uri.parse(userApiUrl));
 
@@ -24,7 +23,6 @@ class ApiService {
       throw Exception('Failed to load users');
     }
   }
-
   Future<List<User>> fetchUser() async {
     final response = await http.get(Uri.parse(userApiUrl));
 
@@ -35,7 +33,6 @@ class ApiService {
       throw Exception('Failed to load users');
     }
   }
-
   Future<List<User>> fetchUserData({int page = 1, int perPage = 10}) async {
     final response = await http.get(Uri.parse(userApiUrl));
 
@@ -45,7 +42,8 @@ class ApiService {
     } else {
       throw Exception('Failed to load users');
     }
-  }  Future<List<Product>> fetchUserProduct({int page = 1, int perPage = 10}) async {
+  }
+  Future<List<Product>> fetchUserProduct({int page = 1, int perPage = 10}) async {
     final response = await http.get(Uri.parse(productApiUrl));
 
     if (response.statusCode == 200) {
@@ -57,7 +55,6 @@ class ApiService {
       throw Exception('Failed to load users');
     }
   }
-
   Future<List<Post>> fetchPosts() async {
     final response = await http.get(Uri.parse(postApiUrl));
     if (response.statusCode == 200) {
@@ -67,7 +64,6 @@ class ApiService {
       throw Exception('Failed to load posts');
     }
   }
-
   Future<List<Post>> FormPosts() async {
     final response = await http.post(Uri.parse(postApiUrl));
     if (response.statusCode == 200) {
@@ -77,7 +73,6 @@ class ApiService {
       throw Exception('Failed to load posts');
     }
   }
-
   Future<Map<String, dynamic>> login(String username, String password) async {
     // Implement your API call logic here
     var res = await Utils.postApiCall(EndPoint.POST_LOGIN, {
@@ -90,8 +85,6 @@ class ApiService {
     var jsonresult = json.decode(res.body);
     // LoginData  loginResponse=LoginData.fromJson(jsonresult);
     // if(loginResponse.result![0].msg=='Success')
-
-    await Future.delayed(Duration(seconds: 2)); // Simulate network delay
-    return {'success': username == 'user' && password == 'password'};
+     return {'success': username == 'user' && password == 'password'};
   }
 }

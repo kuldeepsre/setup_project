@@ -1,8 +1,5 @@
 import 'dart:async';
-import 'dart:convert';
-
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -13,7 +10,6 @@ import 'package:setup_project/provider/CheckboxProvider.dart';
 import 'package:setup_project/repositry/UserRepository.dart';
 import 'package:setup_project/repositry/form_repository/form_repository.dart';
 import 'package:setup_project/repositry/form_repository/login_repo.dart';
-
 import 'AppLocalizations.dart';
 import 'package:http/http.dart' as http;
 import 'ExampleService.dart';
@@ -27,10 +23,8 @@ import 'bloc/notification/notification_bloc.dart';
 import 'bloc/product/product_bloc.dart';
 import 'bloc/them/ThemeCubit.dart';
 import 'bloc/user/user_bloc.dart';
-import 'common_button/LocalizationKeys.dart';
 import 'notification/firebaseApi.dart';
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -77,6 +71,8 @@ class MyApp extends StatelessWidget {
         BlocProvider<PostBloc>(
             create: (context) => PostBloc(PostRepositoryImpl(ApiService()))),
         BlocProvider<FormBloc>(
+            create: (context) =>
+                FormBloc(FormPostRepositoryImpl(ApiService()))), BlocProvider<FormBloc>(
             create: (context) =>
                 FormBloc(FormPostRepositoryImpl(ApiService()))),
         BlocProvider<NotificationBloc>(
@@ -132,6 +128,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void _navigateToHome() {
+   // Navigator.of(context).pushReplacementNamed(RoutePaths.dashboard);
     Navigator.of(context).pushReplacementNamed(RoutePaths.dashboard);
   }
 

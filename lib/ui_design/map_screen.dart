@@ -3,17 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../bloc/map/map_bloc.dart';
-
-
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:permission_handler/permission_handler.dart';
-
 import '../utils/permission_service.dart';
-
-
 class MapScreen extends StatefulWidget {
   @override
   _MapScreenState createState() => _MapScreenState();
@@ -39,8 +30,8 @@ class _MapScreenState extends State<MapScreen> {
           context: context,
           builder: (context) {
             return AlertDialog(
-              title: const Text('Location Permission Required'),
-              content: const Text('This app needs location permission to function. Please enable it in the app settings.'),
+              title:  Text('Location Permission Required'),
+              content:  Text('This app needs location permission to function. Please enable it in the app settings.'),
               actions: [
                 TextButton(
                   onPressed: () {

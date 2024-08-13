@@ -32,3 +32,7 @@ class EditProfileEvent extends FormEvent {
   final int buttonId;
   EditProfileEvent(this.buttonId);
 }
+class CartEvent extends FormEvent {
+  final int buttonId;
+  CartEvent(this.buttonId);
+}

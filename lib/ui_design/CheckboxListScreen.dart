@@ -8,7 +8,7 @@ class CheckboxListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Checkbox List'),
+        title: const Text('Checkbox List'),
       ),
       body: Consumer<CheckboxProvider>(
         builder: (context, provider, child) {
@@ -25,23 +25,27 @@ class CheckboxListScreen extends StatelessWidget {
           );
         },
       ),
-      floatingActionButton: Row(
-        children: [
-          FloatingActionButton(
-            child: Icon(Icons.select_all),
-            onPressed: () {
-              final provider = Provider.of<CheckboxProvider>(context, listen: false);
-              provider.toggleAll(true); // or false to uncheck all
-            },
-          ),
-          FloatingActionButton(
-            child: Icon(Icons.select_all),
-            onPressed: () {
-              final provider = Provider.of<CheckboxProvider>(context, listen: false);
-              provider.toggleUnselectAll(false); // or false to uncheck all
-            },
-          ),
-        ],
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            FloatingActionButton(
+              child: const Icon(Icons.select_all),
+              onPressed: () {
+                final provider = Provider.of<CheckboxProvider>(context, listen: false);
+                provider.toggleAll(true); // or false to uncheck all
+              },
+            ),
+            FloatingActionButton(
+              child: const Icon(Icons.select_all),
+              onPressed: () {
+                final provider = Provider.of<CheckboxProvider>(context, listen: false);
+                provider.toggleUnselectAll(false); // or false to uncheck all
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
